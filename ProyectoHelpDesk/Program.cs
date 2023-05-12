@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoHelpDesk.Back;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,15 +9,13 @@ namespace ProyectoHelpDesk
 {
     internal static class Program
     {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
-        [STAThread]
-        static void Main()
+     
+        static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Cliente cliente = new Cliente();
+            Console.WriteLine(cliente.Generar(11, "Mi laptop no enciende", 2));
+            Console.WriteLine(cliente.Cancelar(100));
+            Console.WriteLine(cliente.Calificar(101,"Buen servicio"));
         }
     }
 }
