@@ -23,28 +23,37 @@ namespace ProyectoHelpDesk.Back
             this.tipo = tipo;
         }
         //-------------------Asignar solicitud------------------
-        public String Asignar(int ticket, int estado = 12)
+        public string Asignar(int ticket, int estado = 12)
         {
-            string sql = "UPDATE Solicitud SET estado = @estado WHERE ticket = @ticket";
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@estado", estado);
-            cmd.Parameters.AddWithValue("@ticket", ticket);
-            conn.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            conn.Close();
-            return "Solicitud en proceso";
+            using (SqlConnection conn = GetSqlConnection())
+            {
+                string sql = "UPDATE Solicitud SET estado = @estado WHERE ticket = @ticket";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@estado", estado);
+                cmd.Parameters.AddWithValue("@ticket", ticket);
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected > 0 ? "Solicitud asignada correctamente" : "No se encontró el ticket especificado";
+            }
         }
         //-------------------Terminar ejecucion------------------
-        public String Ejecutado(int ticket, int estado = 13)
+        public string Ejecutado(int ticket, int estado = 13)
         {
-            string sql = "UPDATE Solicitud SET estado = @estado WHERE ticket = @ticket";
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@estado", estado);
-            cmd.Parameters.AddWithValue("@ticket", ticket);
-            conn.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            conn.Close();
-            return "Solicitud en proceso";
+            using (SqlConnection conn = GetSqlConnection())
+            {
+                string sql = "UPDATE Solicitud SET estado = @estado WHERE ticket = @ticket";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@estado", estado);
+                cmd.Parameters.AddWithValue("@ticket", ticket);
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected > 0 ? "Solicitud ejecutada correctamente" : "No se encontró el ticket especificado";
+            }
+        }
+        private SqlConnection GetSqlConnection()
+        {
+            string connectionString = @"Data Source=LAPTOP_SERVER;Initial Catalog=helpdesk;Integrated Security=True"; // Actualiza la conexión 
+            return new SqlConnection(connectionString);
         }
 
     }
