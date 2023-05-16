@@ -13,9 +13,9 @@ namespace ProyectoHelpDesk
         static void Main(string[] args)
         {
             Cliente cliente = new Cliente();
-            Console.WriteLine(cliente.Generar(11, "Mi laptop no enciende", 2));
-            Console.WriteLine(cliente.Cancelar(100));
-            Console.WriteLine(cliente.Calificar(101,"Buen servicio"));
+            Console.WriteLine(cliente.Generar(11, "No me deja ingresar al sistema", 2));
+            Console.WriteLine(cliente.Cancelar(111));
+            Console.WriteLine(cliente.Calificar(111,"Buen servicio"));
         }
     }
 }

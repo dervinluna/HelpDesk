@@ -11,7 +11,7 @@ namespace ProyectoHelpDesk.Back
     internal class Solicitud:Usuario
     {
         public int ticket { get; set; }
-        public int estado { get; set; }
+        public int estado { get; set; }//11,12,13,14,15,16
         public string descripcion { get; set; }
         public int idCliente { get; set; }
         public int? idTecnico { get; set; } 
