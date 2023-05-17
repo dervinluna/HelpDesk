@@ -14,51 +14,21 @@ namespace ProyectoHelpDesk.Back
         public int estado { get; set; }//11,12,13,14,15,16
         public string descripcion { get; set; }
         public int idCliente { get; set; }
-        public int? idTecnico { get; set; } 
+        public int? idTecnico { get; set; }
+        public string calificacion { get; set; }
         public Solicitud() { }
 
-        public Solicitud(int ticket, int estado, string descripcion, int idCliente, int? idTecnico)
+        public Solicitud(int ticket, int estado, string descripcion, int idCliente, string calificacion, int? idTecnico)
         {
             this.ticket = ticket;
             this.estado = estado;
             this.descripcion = descripcion;
             this.idCliente = idCliente;
             this.idTecnico = idTecnico;
+            this.calificacion= calificacion;
             
 
         }
-        //---------------Generar solicitud--------------------
-        public String Generar(int estado, string descripcion, int idCliente, int? idTecnico)
-        {
-            Solicitud solicitud = new Solicitud();
-            solicitud.estado = estado;
-            solicitud.descripcion = descripcion;
-            solicitud.idCliente  = idCliente;
-            solicitud.idTecnico = idTecnico;
-            //consulta
-            string sql = "INSERT INTO Solicitud (estado, descripcion, idCliente, idTecnico) " +
-             "VALUES (@estado, @descripcion, @idCliente, @idTecnico)";
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@estado", solicitud.estado);
-            cmd.Parameters.AddWithValue("@descripcion", solicitud.descripcion);
-            cmd.Parameters.AddWithValue("@idCliente", solicitud.idCliente);
-            if (solicitud.idTecnico == null)
-            {
-                cmd.Parameters.AddWithValue("@idTecnico", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@idTecnico", solicitud.idTecnico);
-            }
-            conn.Open();
-           try
-           {
-                cmd.ExecuteNonQuery();
-           }catch(Exception ex) {
-                Console.WriteLine(ex.ToString()+"Error no se pudo Grabar insert"); 
-            }
-            conn.Close();
-            return "Se ha creado la solicitud, mantente en espera por favor";
-        }
+       
     }
 }

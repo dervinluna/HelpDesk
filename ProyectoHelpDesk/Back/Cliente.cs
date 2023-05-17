@@ -24,34 +24,17 @@ namespace ProyectoHelpDesk.Back
             this.contraseña = contraseña;
             this.tipo = tipo;
         }
-        //------------Crear Cliente-------------------
-        public String NewCliente(string nombre, string usuario,
-            string contraseña, string tipo)
-        {
-            this.nombre = nombre;
-            this.usuario = usuario;
-            this.contraseña = contraseña;
-            this.tipo = tipo;
-            return "Cliente creado Exitosamente";
-        }
-        //------------Eliminar Cliente-------------------
-        public String DeleteCliente(int idCliente)
-        {
-            this.idCliente = idCliente;
-            //consulta de eliminacion
-            return "Cliente creado Exitosamente";
-        }
         //------------------Generamos la solicitud------------------
-        public String Generar(int estado, string descripcion, int idCliente, int? idTecnico=null)
+        public String Generar( string descripcion, int idCliente, int  estado= 11, string calificacion=null, int? idTecnico=null)
         {
             Solicitud solicitud = new Solicitud();
             solicitud.estado = estado;
             solicitud.descripcion = descripcion;
             solicitud.idCliente = idCliente;
             solicitud.idTecnico = idTecnico;
-            //consulta
-            string sql = "INSERT INTO Solicitud (estado, descripcion, idCliente, idTecnico) " +
-             "VALUES (@estado, @descripcion, @idCliente, @idTecnico)";
+            solicitud.calificacion = calificacion;           //consulta
+            string sql = "INSERT INTO Solicitud (estado, descripcion, idCliente, idTecnico, calificacion) " +
+             "VALUES (@estado, @descripcion, @idCliente, @idTecnico,@calificacion)";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@estado", solicitud.estado);
             cmd.Parameters.AddWithValue("@descripcion", solicitud.descripcion);
@@ -64,6 +47,15 @@ namespace ProyectoHelpDesk.Back
             {
                 cmd.Parameters.AddWithValue("@idTecnico", solicitud.idTecnico);
             }
+            if (solicitud.calificacion == null)
+            {
+                cmd.Parameters.AddWithValue("@calificacion", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@calificacion", solicitud.calificacion);
+            }
+            
             conn.Open();
             try
             {
@@ -72,34 +64,74 @@ namespace ProyectoHelpDesk.Back
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString() + "Error no se pudo Grabar insert");
+                return "Creacion Fallida";
             }
             conn.Close();
-            return "Se ha creado la solicitud, mantente en espera por favor";
+            return "Solicitud creada, mantente en espera por favor...";
         }
         //-----------------------Cancelar Solicitud-------------------------
         public String Cancelar(int ticket,  int estado=16)
         {
+            string sqlSelect = "SELECT COUNT(*) FROM Solicitud WHERE ticket = @ticket";
             string sql = "UPDATE Solicitud SET estado = @estado WHERE ticket = @ticket";
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@estado", estado);
+            SqlCommand cmd = new SqlCommand(sqlSelect, conn);
             cmd.Parameters.AddWithValue("@ticket", ticket);
             conn.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
+            int count = (int)cmd.ExecuteScalar();
+            
+            if (count > 0) {
+                cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@estado", estado);
+                cmd.Parameters.AddWithValue("@ticket", ticket);
+                try
+                {
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    return (ex.ToString() + "Error no se pudo grabar el update.");
+                }
+
+            }
+            else {
+                return "Solicitud no existe, Verificar....";
+            }
+            
             conn.Close();
-            return "Solicitud cancelada exitosamente";
+            return "Solicitud cancelada exitosamente.";
         }
         //-----------------------Calificar servicio-------------------------
         public String Calificar(int ticket, string calificacion, int estado=15)
         {
-            string sql = "UPDATE Solicitud SET estado = @estado, descripcion = @calificacion   WHERE ticket = @ticket";
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@calificacion", calificacion);
-            cmd.Parameters.AddWithValue("@estado", estado);
+            string sqlSelect = "SELECT COUNT(*) FROM Solicitud WHERE ticket = @ticket";
+            string sql = "UPDATE Solicitud SET estado = @estado, calificacion = @calificacion   WHERE ticket = @ticket";
+            SqlCommand cmd = new SqlCommand(sqlSelect, conn);
             cmd.Parameters.AddWithValue("@ticket", ticket);
             conn.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
+            
+            int count = (int)cmd.ExecuteScalar();
+
+            if (count > 0)
+            {
+                cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@calificacion", calificacion);
+                cmd.Parameters.AddWithValue("@estado", estado);
+                cmd.Parameters.AddWithValue("@ticket", ticket);
+                try
+                {
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    return (ex.ToString() + "Error no se pudo Grabar update.");
+                }
+            }
+            else
+            {
+                return "Solicitud no existe, Verificar....";
+            }
             conn.Close();
-            return "Servicio calificado exitosamente";
+            return "Solicitud calificada exitosamente.";
         }
     }
 }

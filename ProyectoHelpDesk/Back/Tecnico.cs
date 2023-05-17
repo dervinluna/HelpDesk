@@ -22,38 +22,70 @@ namespace ProyectoHelpDesk.Back
             this.contraseña = contraseña;
             this.tipo = tipo;
         }
-        //-------------------Asignar solicitud------------------
-        public string Asignar(int ticket, int estado = 12)
-        {
-            using (SqlConnection conn = GetSqlConnection())
-            {
-                string sql = "UPDATE Solicitud SET estado = @estado WHERE ticket = @ticket";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@estado", estado);
-                cmd.Parameters.AddWithValue("@ticket", ticket);
-                conn.Open();
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected > 0 ? "Solicitud asignada correctamente" : "No se encontró el ticket especificado";
-            }
-        }
-        //-------------------Terminar ejecucion------------------
-        public string Ejecutado(int ticket, int estado = 13)
-        {
-            using (SqlConnection conn = GetSqlConnection())
-            {
-                string sql = "UPDATE Solicitud SET estado = @estado WHERE ticket = @ticket";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@estado", estado);
-                cmd.Parameters.AddWithValue("@ticket", ticket);
-                conn.Open();
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected > 0 ? "Solicitud ejecutada correctamente" : "No se encontró el ticket especificado";
-            }
-        }
+      
         private SqlConnection GetSqlConnection()
         {
             string connectionString = @"Data Source=LAPTOP_SERVER;Initial Catalog=helpdesk;Integrated Security=True"; // Actualiza la conexión 
             return new SqlConnection(connectionString);
+        }
+        public String Asignar(int ticket, int idTecnico, int estado = 12)
+        {
+            string sqlSelect = "SELECT COUNT(*) FROM Solicitud WHERE ticket = @ticket";
+            string sql = "UPDATE Solicitud SET estado = @estado, idTecnico = @idTecnico    WHERE ticket = @ticket";
+            SqlCommand cmd = new SqlCommand(sqlSelect, conn);
+            cmd.Parameters.AddWithValue("@ticket", ticket);
+            conn.Open();
+            int count = (int)cmd.ExecuteScalar();
+            if (count > 0)
+            {
+                cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@estado", estado);
+                cmd.Parameters.AddWithValue("@ticket", ticket);
+                cmd.Parameters.AddWithValue("@idTecnico", idTecnico);
+                try
+                {
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    return (ex.ToString() + "Error no se pudo Grabar update");
+                }
+            }
+            else
+            {
+                return "Solicitud no existe, Verificar....";
+            }
+            conn.Close();
+            return "Solicitud Asignada, exitosamente ";
+        }
+        public String Terminar(int ticket, int estado = 13)
+        {
+            string sqlSelect = "SELECT COUNT(*) FROM Solicitud WHERE ticket = @ticket";
+            string sql = "UPDATE Solicitud SET estado = @estado WHERE ticket = @ticket";
+            SqlCommand cmd = new SqlCommand(sqlSelect, conn);
+            cmd.Parameters.AddWithValue("@ticket", ticket);
+            conn.Open();
+            int count = (int)cmd.ExecuteScalar();
+            if (count > 0)
+            {
+                cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@estado", estado);
+                cmd.Parameters.AddWithValue("@ticket", ticket);
+                try
+                {
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    return (ex.ToString() + "Error no se pudo Grabar update");
+                }
+            }
+            else
+            {
+                return "Solicitud no existe, Verificar....";
+            }
+            conn.Close();
+            return "Solicitud Terminada, Espere que se la aprueven.... ";
         }
 
     }
