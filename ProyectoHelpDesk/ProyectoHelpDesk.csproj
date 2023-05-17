@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Back\Cliente.cs" />
     <Compile Include="Back\JefeIt.cs" />
+    <Compile Include="Back\Nodo_Tecnico.cs" />
     <Compile Include="Back\Solicitud.cs" />
     <Compile Include="Back\Tecnico.cs" />
     <Compile Include="Back\Usuario.cs" />
