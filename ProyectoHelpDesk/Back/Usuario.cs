@@ -17,6 +17,7 @@ namespace ProyectoHelpDesk.Back
         public string usuario { get; set; }
         public string contraseña { get; set; }
         public string tipo { get; set; } //(JefeIt,Cliente,Tipo)
+        public int? cantSolicitudes { get; set; }
         //constructor sin parametros 
         public Usuario() { }
         //constructor con parametros
