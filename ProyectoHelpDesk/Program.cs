@@ -1,4 +1,5 @@
 ﻿using ProyectoHelpDesk.Back;
+using ProyectoHelpDesk.Front;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ProyectoHelpDesk.Back.Tecnico;
+using ProyectoHelpDesk.Front;
 
 namespace ProyectoHelpDesk
 {
@@ -27,13 +29,32 @@ namespace ProyectoHelpDesk
             //Console.WriteLine(tecnico.Asignar(102, 2));
             //Console.WriteLine(tecnico.Terminar(102));
             // Crear instancia de la lista doblemente enlazada
-           // Tecnico.ListaDobleEnlazada lista = new Tecnico.ListaDobleEnlazada();   
+            // Tecnico.ListaDobleEnlazada lista = new Tecnico.ListaDobleEnlazada();   
             //lista.ImprimirSolicitudes();
             //JefeIt.ListaDobleEnlazada lista = new JefeIt.ListaDobleEnlazada();
             //lista.ImprimirSolicitudes();
+            //Tecnico.ListaDobleEnlazada2 lista = new Tecnico.ListaDobleEnlazada2();
+            //lista.ImprimirSolicitudes(4);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // Crea una instancia del formulario principal que contendrá el UserControl Login
+            Form formularioPrincipal = new Form();
+
+            // Crea una instancia del UserControl Login
+            cliente clienteForm = new cliente();
+
+            // Agrega el UserControl Login al formulario principal
+           // formularioPrincipal.Controls.Add(clienteForm);
+
+            // Inicia la aplicación mostrando el formulario principal
+            Application.Run(clienteForm);
+            //Application.Run();
+
+
+
+
         }
-
-
     }
     }
 

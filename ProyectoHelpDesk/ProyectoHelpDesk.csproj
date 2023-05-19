@@ -48,18 +48,40 @@
   <ItemGroup>
     <Compile Include="Back\Cliente.cs" />
     <Compile Include="Back\JefeIt.cs" />
+    <Compile Include="Back\login.cs" />
     <Compile Include="Back\Nodo_Tecnico.cs" />
     <Compile Include="Back\Solicitud.cs" />
     <Compile Include="Back\Tecnico.cs" />
     <Compile Include="Back\Usuario.cs" />
+    <Compile Include="Front\cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Front\cliente.Designer.cs">
+      <DependentUpon>cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Front\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Front\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Front\Login.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Front\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Front\cliente.resx">
+      <DependentUpon>cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Front\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Front\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -70,6 +92,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.Cliente.datasource" />
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.JefeIt+ListaDobleEnlazada.datasource" />
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.JefeIt+Nodo.datasource" />
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.JefeIt.datasource" />
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.Nodo.datasource" />
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.Solicitud.datasource" />
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.Tecnico+ListaDobleEnlazada.datasource" />
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.Tecnico+ListaDobleEnlazada2.datasource" />
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.Tecnico+Nodo.datasource" />
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.Tecnico.datasource" />
+    <None Include="Properties\DataSources\ProyectoHelpDesk.Back.Usuario.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -83,6 +116,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

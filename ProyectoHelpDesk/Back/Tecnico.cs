@@ -159,11 +159,69 @@ namespace ProyectoHelpDesk.Back
             cabeza.ImprimirRecursivo();
         }
       }
-    /*
- 
- 
- 
-    */
+
+
+        //---------------------Obtenemos la lista de solicitudes asignandas------
+        public class ListaDobleEnlazada2
+        {
+            private Nodo cabeza;
+            private Nodo cola;
+            //-----------------------------Metodo agregar a la lista------------
+            public void Agregar(Solicitud solicitud)
+            {
+                Nodo nuevoNodo = new Nodo { Dato = solicitud };
+
+                if (cabeza == null) // Si la lista está vacía
+                {
+                    cabeza = nuevoNodo;
+                    cola = nuevoNodo;
+                }
+                else
+                {
+                    cola.Siguiente = nuevoNodo;
+                    nuevoNodo.Anterior = cola;
+                    cola = nuevoNodo;
+                }
+            }
+            //------------------Mandamos a guardar en la lista los resultados de la consulta---------
+            public void Guardando(int idTecnico)
+            {
+                using (conn)
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM Solicitud where idTecnico = @idTecnico and estado = 12 ";
+                    using (SqlCommand command = new SqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@idTecnico", idTecnico);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Solicitud solicitud = new Solicitud();
+                                solicitud.ticket = (int)reader["ticket"];
+                                solicitud.descripcion = (string)reader["descripcion"];
+                                solicitud.idCliente = (int)reader["idCliente"];
+                                // Asigna aquí los valores correspondientes a las demás propiedades de "solicitud"
+
+                                Agregar(solicitud);
+                            }
+                        }
+                    }
+                }
+
+            }
+            //-----------------imprimimos las solicitudes pendientes de asignacion--------------
+            public void ImprimirSolicitudes(int idTecnico)
+            {
+                Guardando(idTecnico);
+                cabeza.ImprimirRecursivo();
+            }
+        }
+        /*
+
+
+
+        */
 
 
     }
