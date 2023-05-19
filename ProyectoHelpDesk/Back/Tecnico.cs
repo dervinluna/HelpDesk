@@ -16,7 +16,7 @@ namespace ProyectoHelpDesk.Back
         public Tecnico() { }
 
         public Tecnico(int idTecnico, string nombre, string usuario,
-            string contraseña, string tipo, int cantSolicitudes)
+            string contraseña, int tipo, int cantSolicitudes)
         {
             this.idTecnico = idTecnico;
             this.nombre = nombre;

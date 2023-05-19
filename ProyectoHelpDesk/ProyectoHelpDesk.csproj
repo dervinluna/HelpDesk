@@ -49,7 +49,6 @@
     <Compile Include="Back\Cliente.cs" />
     <Compile Include="Back\JefeIt.cs" />
     <Compile Include="Back\login.cs" />
-    <Compile Include="Back\Nodo_Tecnico.cs" />
     <Compile Include="Back\Solicitud.cs" />
     <Compile Include="Back\Tecnico.cs" />
     <Compile Include="Back\Usuario.cs" />
@@ -59,28 +58,19 @@
     <Compile Include="Front\cliente.Designer.cs">
       <DependentUpon>cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Front\Form1.cs">
+    <Compile Include="Front\Login2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Front\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Front\Login.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Front\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="Front\Login2.Designer.cs">
+      <DependentUpon>Login2.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Front\cliente.resx">
       <DependentUpon>cliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Front\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Front\Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="Front\Login2.resx">
+      <DependentUpon>Login2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -118,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="icons\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,7 +15,7 @@ namespace ProyectoHelpDesk.Back
         public JefeIt() { }
 
         public JefeIt(int idJefe, string nombre, string usuario,
-            string contraseña, string tipo)
+            string contraseña, int tipo)
         {
             this.idJefe = idJefe;
             this.nombre = nombre;

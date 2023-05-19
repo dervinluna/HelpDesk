@@ -13,15 +13,16 @@ namespace ProyectoHelpDesk.Back
        public SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP_SERVER;Initial Catalog=helpdesk;Integrated Security=True");
 
         //Creamos los Atributos de la Superclase
+        public int id { get; set; }
         public string nombre { get; set; }
         public string usuario { get; set; }
         public string contraseña { get; set; }
-        public string tipo { get; set; } //(JefeIt,Cliente,Tipo)
+        public int tipo { get; set; } //(JefeIt,Cliente,Tipo)
         public int? cantSolicitudes { get; set; }
         //constructor sin parametros 
         public Usuario() { }
         //constructor con parametros
-        public Usuario(string nombre, string usuario, string contraseña, string tipo)
+        public Usuario(string nombre, string usuario, string contraseña, int tipo)
         {
           
             this.nombre = nombre;
@@ -29,5 +30,29 @@ namespace ProyectoHelpDesk.Back
             this.contraseña = contraseña;
             this.tipo = tipo;
         }
+        #region validacion del login
+        public Boolean Acceso(string user, string pass) {
+            string sql = "SELECT idUsuario, nombre, tipo FROM Usuario WHERE usuario = @user AND password = @pass";
+            
+            conn.Open();         
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@user", user);
+                cmd.Parameters.AddWithValue("@pass", pass);
+            try
+            {
+                int rowsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString() + "Error no se pudo grabar update.");
+                return false;
+            }
+           
+            conn.Close();
+            return true;
+        }
+
+        #endregion
+
     }
 }

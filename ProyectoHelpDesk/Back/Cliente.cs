@@ -16,7 +16,7 @@ namespace ProyectoHelpDesk.Back
         }
         //constructor
         public Cliente(int idCliente, string nombre, string usuario,
-            string contraseña, string tipo)
+            string contraseña, int tipo)
         {
             this.idCliente = idCliente;
             this.nombre = nombre;
@@ -25,7 +25,7 @@ namespace ProyectoHelpDesk.Back
             this.tipo = tipo;
         }
         //------------------Generamos la solicitud------------------
-        public String Generar( string descripcion, int idCliente, int  estado= 11, string calificacion=null, int? idTecnico=null)
+        public Boolean Generar( string descripcion, int idCliente, int  estado= 11, string calificacion=null, int? idTecnico=null)
         {
             Solicitud solicitud = new Solicitud();
             solicitud.estado = estado;
@@ -64,10 +64,10 @@ namespace ProyectoHelpDesk.Back
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString() + "Error no se pudo Grabar insert");
-                return "Creacion Fallida";
+                return false;
             }
             conn.Close();
-            return "Solicitud creada, mantente en espera por favor...";
+            return true;
         }
         //-----------------------Cancelar Solicitud-------------------------
         public String Cancelar(int ticket,  int estado=16)

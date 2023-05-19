@@ -35,23 +35,10 @@ namespace ProyectoHelpDesk
             //lista.ImprimirSolicitudes();
             //Tecnico.ListaDobleEnlazada2 lista = new Tecnico.ListaDobleEnlazada2();
             //lista.ImprimirSolicitudes(4);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            // Crea una instancia del formulario principal que contendrá el UserControl Login
-            Form formularioPrincipal = new Form();
-
-            // Crea una instancia del UserControl Login
-            cliente clienteForm = new cliente();
-
-            // Agrega el UserControl Login al formulario principal
-           // formularioPrincipal.Controls.Add(clienteForm);
-
-            // Inicia la aplicación mostrando el formulario principal
-            Application.Run(clienteForm);
-            //Application.Run();
-
-
+            Login2 clientes = new Login2();
+            Application.Run(clientes);
+            //login.ListaDobleEnlazada2 list = new login.ListaDobleEnlazada2();
+            //list.ImprimirSolicitudes("holAmundO","dervinluna");
 
 
         }

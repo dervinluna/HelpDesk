@@ -13,9 +13,13 @@ namespace ProyectoHelpDesk.Front
 {
     public partial class cliente : Form
     {
-        String descrip;
+        string descrip;
         int idClient;
+        
+       
         Cliente   client= new Cliente();
+        JefeIt jefeIt = new JefeIt();
+       
         public cliente()
         {
             InitializeComponent();
@@ -33,10 +37,20 @@ namespace ProyectoHelpDesk.Front
 
         private void button1_Click(object sender, EventArgs e)
         {
-            client.Generar(descrip, idClient);
-            MessageBox.Show("Acción realizada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            if (client.Generar(descrip, idClient))
+            {
+                
+                MessageBox.Show("Acción realizada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBIdCliente.Text = string.Empty;
+                textBDescripcion.Text = "";
+                
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error. Revise los datos enviados...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
+            }
         }
 
         private void textBDescripcion_TextChanged(object sender, EventArgs e)
@@ -49,7 +63,14 @@ namespace ProyectoHelpDesk.Front
         private void textBIdCliente_TextChanged(object sender, EventArgs e)
         {
             string dato = textBIdCliente.Text;
-            idClient =   Int32.Parse(dato);
-             }
+            if (string.IsNullOrEmpty(dato))
+            {
+
+            }
+            else
+            {
+                idClient = Int32.Parse(dato);
+            }
+        }
     }
 }
