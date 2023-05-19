@@ -9,7 +9,11 @@ namespace ProyectoHelpDesk.Back
 {
     internal class JefeIt : Usuario
     {
+<<<<<<< HEAD
         public static SqlConnection conn = new SqlConnection(@"Data Source=LAIN;Initial Catalog=helpdesk;Integrated Security=True");
+=======
+        public static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP_SERVER;Initial Catalog=helpdesk;Integrated Security=True");
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
 
         public int idJefe { get; set; }
         public JefeIt() { }
@@ -23,6 +27,7 @@ namespace ProyectoHelpDesk.Back
             this.contraseña = contraseña;
             this.tipo = tipo;
         }
+<<<<<<< HEAD
         
         //------------------------------metodo reasignar--------------------------------
         public String Reasignar(int ticket, int estado = 12)
@@ -86,6 +91,10 @@ namespace ProyectoHelpDesk.Back
         }
         //-------------------metodo aprobar solicitud-------------------------------
         public String Aprobar(int ticket, int estado = 14, int? idTecnico = null)
+=======
+        //-------------------metodo aprobar solicitud-------------------------------
+        public String Aprobar(int ticket, int estado = 14, int? idTecnico=null)
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
         {
             string sqlSelect = "SELECT COUNT(*) FROM Solicitud WHERE ticket = @ticket";
             string sql = "UPDATE Solicitud SET estado = @estado, idTecnico = @idTecnico   WHERE ticket = @ticket";
@@ -122,8 +131,13 @@ namespace ProyectoHelpDesk.Back
             conn.Close();
             return "Servicio aprobado exitosamente. ";
         }
+<<<<<<< HEAD
         //------------------------------metodo calificado--------------------------------
         public String Calificar(int ticket, int estado = 15)
+=======
+        //------------------------------metodo reasignar--------------------------------
+        public String Reasignar(int ticket, int estado = 12)
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
         {
             string sqlSelect = "SELECT COUNT(*) FROM Solicitud WHERE ticket = @ticket";
             string sql = "UPDATE Solicitud SET estado = @estado   WHERE ticket = @ticket";
@@ -152,6 +166,7 @@ namespace ProyectoHelpDesk.Back
             conn.Close();
             return "Solicitud reasignada, exitosamente. ";
         }
+<<<<<<< HEAD
 
         //------------------------------metodo cancelar--------------------------------
         public String Cancelar(int ticket, int estado = 16)
@@ -187,6 +202,8 @@ namespace ProyectoHelpDesk.Back
 
 
 
+=======
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
         //---------------------Clase que representa la lista doblemente enlazada-------------
         public class Nodo
         {

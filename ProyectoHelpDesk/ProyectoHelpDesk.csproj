@@ -71,6 +71,7 @@
     <Compile Include="Front\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="jefeit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +86,10 @@
     <Compile Include="tecnico.Designer.cs">
       <DependentUpon>tecnico.cs</DependentUpon>
     </Compile>
+=======
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
     <EmbeddedResource Include="Front\cliente.resx">
       <DependentUpon>cliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,9 +99,12 @@
     <EmbeddedResource Include="Front\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="jefeit.resx">
       <DependentUpon>jefeit.cs</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -107,9 +115,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+<<<<<<< HEAD
     <EmbeddedResource Include="tecnico.resx">
       <DependentUpon>tecnico.cs</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
     <None Include="Properties\DataSources\ProyectoHelpDesk.Back.Cliente.datasource" />
     <None Include="Properties\DataSources\ProyectoHelpDesk.Back.JefeIt+ListaDobleEnlazada.datasource" />
     <None Include="Properties\DataSources\ProyectoHelpDesk.Back.JefeIt+Nodo.datasource" />

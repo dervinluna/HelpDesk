@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+<<<<<<< HEAD
 using System.Data.SqlClient;
+=======
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -52,10 +55,13 @@ namespace ProyectoHelpDesk.Front
             string dato = textBIdCliente.Text;
             idClient =   Int32.Parse(dato);
              }
+<<<<<<< HEAD
 
         private void cliente_Load(object sender, EventArgs e)
         {
            
         }
+=======
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
     }
 }

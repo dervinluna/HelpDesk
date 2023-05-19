@@ -37,29 +37,47 @@
             // 
             // textBDescripcion
             // 
+<<<<<<< HEAD
             this.textBDescripcion.Location = new System.Drawing.Point(269, 118);
             this.textBDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBDescripcion.Name = "textBDescripcion";
             this.textBDescripcion.Size = new System.Drawing.Size(360, 22);
+=======
+            this.textBDescripcion.Location = new System.Drawing.Point(202, 96);
+            this.textBDescripcion.Name = "textBDescripcion";
+            this.textBDescripcion.Size = new System.Drawing.Size(271, 20);
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
             this.textBDescripcion.TabIndex = 0;
             this.textBDescripcion.TextChanged += new System.EventHandler(this.textBDescripcion_TextChanged);
             // 
             // textBIdCliente
             // 
+<<<<<<< HEAD
             this.textBIdCliente.Location = new System.Drawing.Point(269, 150);
             this.textBIdCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBIdCliente.Name = "textBIdCliente";
             this.textBIdCliente.Size = new System.Drawing.Size(132, 22);
+=======
+            this.textBIdCliente.Location = new System.Drawing.Point(202, 122);
+            this.textBIdCliente.Name = "textBIdCliente";
+            this.textBIdCliente.Size = new System.Drawing.Size(100, 20);
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
             this.textBIdCliente.TabIndex = 2;
             this.textBIdCliente.TextChanged += new System.EventHandler(this.textBIdCliente_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+<<<<<<< HEAD
             this.label1.Location = new System.Drawing.Point(160, 122);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 16);
+=======
+            this.label1.Location = new System.Drawing.Point(120, 99);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
             this.label1.TabIndex = 3;
             this.label1.Text = "Descripcion";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -67,10 +85,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
+<<<<<<< HEAD
             this.label2.Location = new System.Drawing.Point(176, 159);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 16);
+=======
+            this.label2.Location = new System.Drawing.Point(132, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
             this.label2.TabIndex = 4;
             this.label2.Text = "Id Cliente";
             this.label2.UseMnemonic = false;
@@ -78,10 +102,16 @@
             // 
             // button1
             // 
+<<<<<<< HEAD
             this.button1.Location = new System.Drawing.Point(269, 218);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(268, 28);
+=======
+            this.button1.Location = new System.Drawing.Point(202, 177);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(201, 23);
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
             this.button1.TabIndex = 5;
             this.button1.Text = "Hacer solicitud";
             this.button1.UseVisualStyleBackColor = true;
@@ -89,18 +119,29 @@
             // 
             // cliente
             // 
+<<<<<<< HEAD
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+=======
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBIdCliente);
             this.Controls.Add(this.textBDescripcion);
+<<<<<<< HEAD
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "cliente";
             this.Text = "Cliente";
             this.Load += new System.EventHandler(this.cliente_Load);
+=======
+            this.Name = "cliente";
+            this.Text = "Cliente";
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
             this.ResumeLayout(false);
             this.PerformLayout();
 
