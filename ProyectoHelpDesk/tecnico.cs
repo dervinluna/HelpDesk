@@ -82,5 +82,20 @@ namespace ProyectoHelpDesk
         {
             idtecnico = Int32.Parse(txtIdtec.Text);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

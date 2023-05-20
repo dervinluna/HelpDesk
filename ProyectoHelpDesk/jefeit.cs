@@ -116,5 +116,10 @@ namespace ProyectoHelpDesk
             conn.Close();
             dataGridView1.DataSource = dt;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
