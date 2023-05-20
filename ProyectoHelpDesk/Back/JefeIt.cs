@@ -9,13 +9,13 @@ namespace ProyectoHelpDesk.Back
 {
     internal class JefeIt : Usuario
     {
-        public static SqlConnection conn = new SqlConnection(@"Data Source=LAIN;Initial Catalog=helpdesk;Integrated Security=True");
+        public static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP_SERVER;Initial Catalog=helpdesk;Integrated Security=True");
 
         public int idJefe { get; set; }
         public JefeIt() { }
 
         public JefeIt(int idJefe, string nombre, string usuario,
-            string contraseña, string tipo)
+            string contraseña, int tipo)
         {
             this.idJefe = idJefe;
             this.nombre = nombre;

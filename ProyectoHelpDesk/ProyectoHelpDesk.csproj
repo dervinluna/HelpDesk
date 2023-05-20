@@ -66,7 +66,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Front\Login.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Front\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>

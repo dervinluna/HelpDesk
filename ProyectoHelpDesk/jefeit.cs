@@ -15,7 +15,7 @@ namespace ProyectoHelpDesk
 {
     public partial class jefeit : Form
     {
-        public static SqlConnection conn = new SqlConnection(@"Data Source=LAIN;Initial Catalog=helpdesk;Integrated Security=True");
+        public static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP_SERVER;Initial Catalog=helpdesk;Integrated Security=True");
         int ticket;
         JefeIt JEFEIT = new JefeIt();
         public jefeit()

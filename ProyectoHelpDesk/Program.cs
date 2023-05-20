@@ -42,7 +42,7 @@ namespace ProyectoHelpDesk
             Form formularioPrincipal = new Form();
 
             // Crea una instancia del UserControl Login
-            cliente clienteForm = new cliente();
+            Login clienteForm = new Login();
             jefeit jefeitForm = new jefeit();
             tecnico TecnicoForm = new tecnico();
 
@@ -50,8 +50,8 @@ namespace ProyectoHelpDesk
            // formularioPrincipal.Controls.Add(clienteForm);
 
             // Inicia la aplicación mostrando el formulario principal
-            Application.Run(jefeitForm);
-            //Application.Run();
+            //Application.Run(jefeitForm);
+            Application.Run(clienteForm);
 
 
 

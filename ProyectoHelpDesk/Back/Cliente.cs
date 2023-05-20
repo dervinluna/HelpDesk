@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProyectoHelpDesk.Back
 {
     internal class Cliente : Usuario
     {
+        public static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP_SERVER;Initial Catalog=helpdesk;Integrated Security=True");
 
         public int idCliente { get; set; }
         public int ticketGene { get; set; }
@@ -17,7 +14,7 @@ namespace ProyectoHelpDesk.Back
         }
         //constructor
         public Cliente(int idCliente, string nombre, string usuario,
-            string contraseña, string tipo)
+            string contraseña, int tipo)
         {
             this.idCliente = idCliente;
             this.nombre = nombre;
@@ -26,7 +23,7 @@ namespace ProyectoHelpDesk.Back
             this.tipo = tipo;
         }
         //------------------Generamos la solicitud------------------
-        public String Generar( string descripcion, int idCliente, int  estado= 11, string calificacion=null, int? idTecnico=null)
+        public Boolean Generar(string descripcion, int idCliente, int estado = 11, string calificacion = null, int? idTecnico = null)
         {
             Solicitud solicitud = new Solicitud();
             solicitud.estado = estado;
@@ -56,7 +53,7 @@ namespace ProyectoHelpDesk.Back
             {
                 cmd.Parameters.AddWithValue("@calificacion", solicitud.calificacion);
             }
-            
+
             conn.Open();
             try
             {
@@ -65,13 +62,13 @@ namespace ProyectoHelpDesk.Back
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString() + "Error no se pudo Grabar insert");
-                return "Creacion Fallida";
+                return false;
             }
             conn.Close();
-            return "Solicitud creada, mantente en espera por favor...";
+            return true;
         }
         //-----------------------Cancelar Solicitud-------------------------
-        public String Cancelar(int ticket,  int estado=16)
+        public String Cancelar(int ticket, int estado = 16)
         {
             string sqlSelect = "SELECT COUNT(*) FROM Solicitud WHERE ticket = @ticket";
             string sql = "UPDATE Solicitud SET estado = @estado WHERE ticket = @ticket";
@@ -79,8 +76,9 @@ namespace ProyectoHelpDesk.Back
             cmd.Parameters.AddWithValue("@ticket", ticket);
             conn.Open();
             int count = (int)cmd.ExecuteScalar();
-            
-            if (count > 0) {
+
+            if (count > 0)
+            {
                 cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@estado", estado);
                 cmd.Parameters.AddWithValue("@ticket", ticket);
@@ -94,22 +92,23 @@ namespace ProyectoHelpDesk.Back
                 }
 
             }
-            else {
+            else
+            {
                 return "Solicitud no existe, Verificar....";
             }
-            
+
             conn.Close();
             return "Solicitud cancelada exitosamente.";
         }
         //-----------------------Calificar servicio-------------------------
-        public String Calificar(int ticket, string calificacion, int estado=15)
+        public String Calificar(int ticket, string calificacion, int estado = 15)
         {
             string sqlSelect = "SELECT COUNT(*) FROM Solicitud WHERE ticket = @ticket";
             string sql = "UPDATE Solicitud SET estado = @estado, calificacion = @calificacion   WHERE ticket = @ticket";
             SqlCommand cmd = new SqlCommand(sqlSelect, conn);
             cmd.Parameters.AddWithValue("@ticket", ticket);
             conn.Open();
-            
+
             int count = (int)cmd.ExecuteScalar();
 
             if (count > 0)

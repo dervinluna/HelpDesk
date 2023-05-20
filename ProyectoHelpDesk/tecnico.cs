@@ -14,7 +14,7 @@ namespace ProyectoHelpDesk
 {
     public partial class tecnico : Form
     {
-        public static SqlConnection conn = new SqlConnection(@"Data Source=LAIN;Initial Catalog=helpdesk;Integrated Security=True");
+        public static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP_SERVER;Initial Catalog=helpdesk;Integrated Security=True");
         int ticket;
         int idtecnico;
         Tecnico TECNICO = new Tecnico();

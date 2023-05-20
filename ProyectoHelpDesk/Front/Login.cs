@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoHelpDesk.Back;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,73 +8,68 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProyectoHelpDesk.Front
 {
-    public partial class Login : UserControl
+    public partial class Login : Form
     {
+        string password;
+        string user;
         public Login()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-           
-
-        }
-        private void txtuser_Enter(object sender, EventArgs e)
-        {
-            if (textUsuario.Text == "Usuario")
-            {
-                textUsuario.Text = "";
-                textUsuario.ForeColor = Color.LightGray;
-            }
-        }
-        private void txtuser_Leave(object sender, EventArgs e)
-        {
-            if (textUsuario.Text == "")
-            {
-                textUsuario.Text = "Usuario";
-                textUsuario.ForeColor = Color.Silver;
-            }
-        }
-
-        private void textPassword_TextChanged(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
-        private void txtpass_Enter(object sender, EventArgs e)
+
+        private void btnIniciar_Click(object sender, EventArgs e)
         {
-            if (textPassword.Text == "Contraseña")
+            login verifica = new login();
+
+            switch (verifica.Guardando(password, user).tipo)
             {
-                textPassword.Text = "Contraseña";
-                textPassword.ForeColor = Color.LightGray;
-                textPassword.UseSystemPasswordChar = true;
+                case 10:
+                    MessageBox.Show("Bienvenido Jefe It", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Ocultar el formulario actual
+                    this.Hide();
+                    jefeit jefe = new jefeit();
+                    jefe.Show();
+
+                    break;
+                case 11:
+                    MessageBox.Show("Bienvenido Tecnico", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Ocultar el formulario actual
+                    this.Hide();
+                    tecnico tecni = new tecnico();
+                    tecni.Show();
+                    break;
+                case 12:
+                    MessageBox.Show("Bienvenido cliente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Ocultar el formulario actual
+                    this.Hide();
+                    cliente clientes = new cliente();
+                    clientes.Show();
+                    break;
+                default:
+                    MessageBox.Show("Ha ocurrido un error. Revise los datos enviados... ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
             }
         }
-        private void txtpass_Leave(object sender, EventArgs e)
+
+        private void txtPass_TextChanged(object sender, EventArgs e)
         {
-            if (textPassword.Text == "")
-            {
-                textPassword.Text = "Contraseña";
-                textPassword.ForeColor = Color.Silver;
-                textPassword.UseSystemPasswordChar = false;
-            }
+            password= txtPass.Text;
+        }
+
+        private void txtUser_TextChanged(object sender, EventArgs e)
+        {
+            user = txtUser.Text;
         }
 
         private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void butnIniciar_Click(object sender, EventArgs e)
         {
 
         }

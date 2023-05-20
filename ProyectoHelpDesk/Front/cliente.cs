@@ -34,9 +34,19 @@ namespace ProyectoHelpDesk.Front
 
         private void button1_Click(object sender, EventArgs e)
         {
-            client.Generar(descrip, idClient);
-            MessageBox.Show("Acción realizada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (client.Generar(descrip, idClient))
+            {
 
+                MessageBox.Show("Acción realizada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBIdCliente.Text = string.Empty;
+                textBDescripcion.Text = "";
+
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error. Revise los datos enviados...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
 
         }
 
@@ -50,8 +60,15 @@ namespace ProyectoHelpDesk.Front
         private void textBIdCliente_TextChanged(object sender, EventArgs e)
         {
             string dato = textBIdCliente.Text;
-            idClient =   Int32.Parse(dato);
-             }
+            if (string.IsNullOrEmpty(dato))
+            {
+
+            }
+            else
+            {
+                idClient = Int32.Parse(dato);
+            }
+        }
 
         private void cliente_Load(object sender, EventArgs e)
         {
