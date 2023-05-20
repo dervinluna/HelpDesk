@@ -160,6 +160,7 @@
             this.Controls.Add(this.txtTicket);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.ti);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "tecnico";
             this.Text = "tecnico";
