@@ -13,13 +13,18 @@ namespace ProyectoHelpDesk
 {
     internal static class Program
     {
+
+       
+
         public static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP_SERVER;Initial Catalog=helpdesk;Integrated Security=True");
 
         static void Main(string[] args)
         {
 
             Cliente cliente = new Cliente();
-            JefeIt jefeIt = new JefeIt();
+
+            JefeIt jefeit = new JefeIt();
+
             Tecnico tecnico = new Tecnico();
             //Console.WriteLine(cliente.Generar("No puedo ingresar al sistema1", 1));
             //Console.WriteLine(cliente.Cancelar(102));
@@ -35,10 +40,35 @@ namespace ProyectoHelpDesk
             //lista.ImprimirSolicitudes();
             //Tecnico.ListaDobleEnlazada2 lista = new Tecnico.ListaDobleEnlazada2();
             //lista.ImprimirSolicitudes(4);
-            Login2 clientes = new Login2();
-            Application.Run(clientes);
+
+            //Login2 clientes = new Login2();
+            //Application.Run(clientes);
             //login.ListaDobleEnlazada2 list = new login.ListaDobleEnlazada2();
             //list.ImprimirSolicitudes("holAmundO","dervinluna");
+
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+
+            // Crea una instancia del formulario principal que contendrá el UserControl Login
+            //Form formularioPrincipal = new Form();
+
+            // Crea una instancia del UserControl Login
+            //cliente clienteForm = new cliente();
+
+           // jefeit jefeitForm = new jefeit();
+            //tecnico TecnicoForm = new tecnico();
+
+
+            // Agrega el UserControl Login al formulario principal
+           // formularioPrincipal.Controls.Add(clienteForm);
+
+            // Inicia la aplicación mostrando el formulario principal
+
+           // Application.Run(jefeitForm);
+
+            //Application.Run(clienteForm);
+
+            //Application.Run();
 
 
         }

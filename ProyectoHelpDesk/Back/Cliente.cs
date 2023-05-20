@@ -9,6 +9,10 @@ namespace ProyectoHelpDesk.Back
 {
     internal class Cliente : Usuario
     {
+<<<<<<< HEAD
+
+=======
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
         public int idCliente { get; set; }
         public int ticketGene { get; set; }
         public Cliente()

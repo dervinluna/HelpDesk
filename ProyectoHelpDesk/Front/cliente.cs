@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -63,6 +64,7 @@ namespace ProyectoHelpDesk.Front
         private void textBIdCliente_TextChanged(object sender, EventArgs e)
         {
             string dato = textBIdCliente.Text;
+
             if (string.IsNullOrEmpty(dato))
             {
 
@@ -72,5 +74,15 @@ namespace ProyectoHelpDesk.Front
                 idClient = Int32.Parse(dato);
             }
         }
+
+            idClient =   Int32.Parse(dato);
+             }
+
+
+        private void cliente_Load(object sender, EventArgs e)
+        {
+           
+        }
+
     }
 }

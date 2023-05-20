@@ -10,7 +10,11 @@ namespace ProyectoHelpDesk.Back
 {
     internal class Tecnico : Usuario
     {
+<<<<<<< HEAD
+       public static SqlConnection conn = new SqlConnection(@"Data Source=LAIN;Initial Catalog=helpdesk;Integrated Security=True");
+=======
        public static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP_SERVER;Initial Catalog=helpdesk;Integrated Security=True");
+>>>>>>> f9a017f3238c510e5494daea48cb1f1874920198
         public int idTecnico { get; set; }
         public int ticketAsig { get; set; }
         public Tecnico() { }
